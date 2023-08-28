@@ -7,21 +7,27 @@ const createInvoice = (req, res) => {
     const clientId = new mongoose.Types.ObjectId(req.params.id);
 
     if(Object.keys(body).length !== 0){
-        const invoice = new Invoice({
-            client: clientId,
-            items: body.items,
-            rates: body.rates,
-            hours: body.hours,
-            total: body.total
-        });
+        if (body.items && body.rates && body.hours && body.total) {
+            const invoice = new Invoice({
+                client: clientId,
+                items: body.items,
+                rates: body.rates,
+                hours: body.hours,
+                total: body.total
+            });
+    
+            invoice.save().then((value) => {
+                console.log(value);
+                res.status(201).json({"message": "invoice created", "invoice": value});
+            }).catch((e) => {
+    
+                res.status(400).json({"message": "failed to create invoice"});
+            });
 
-        invoice.save().then((value) => {
-            console.log(value);
-            res.status(201).json({"message": "invoice created", "invoice": value});
-        }).catch((e) => {
-
-            res.status(400).json({"message": "failed to create invoice"});
-        });
+        } else {
+            res.status(400).json({"message": "please provide some data"});
+        }
+        
     } else {
         res.status(400).json({"message": "something went wrong"});
     }

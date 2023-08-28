@@ -5,7 +5,7 @@ const invoiceSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "client"
     },
-    item: [],
+    items: [],
     rates: [],
     hours: [],
     total: {
