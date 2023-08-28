@@ -2,6 +2,7 @@ const Client = require("../models/Client");
 
 const saveClient = async (req, res) => {
     const body = req.body;
+    console.log(body);
 
     if (Object.keys(body).length !== 0){
 

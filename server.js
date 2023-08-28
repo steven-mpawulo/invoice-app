@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
     res.json({"message": "welcome to my serever"});
 });
 
+app.use(express.json());
 app.use('/api/v1', invoiceRouter);
 
 const port = process.env.PORT || 5001;
