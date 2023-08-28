@@ -1,9 +1,10 @@
 const express = require('express');
+const saveClient = require('../controllers/saveClient');
 const invoiceRouter = express.Router();
 
-invoiceRouter.get('/', (req, res) => {
-    res.json({"message": "started invoice router"});
-});
+
+
+invoiceRouter.post('/clients', saveClient);
 
 module.exports = invoiceRouter;
 
