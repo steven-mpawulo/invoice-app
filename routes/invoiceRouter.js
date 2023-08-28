@@ -6,7 +6,7 @@ const invoiceRouter = express.Router();
 
 
 invoiceRouter.post('/clients', saveClient);
-invoiceRouter.get('clients', retreiveClients);
+invoiceRouter.get('/clients', retreiveClients);
 
 module.exports = invoiceRouter;
 
