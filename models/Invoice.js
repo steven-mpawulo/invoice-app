@@ -8,6 +8,9 @@ const invoiceSchema = new mongoose.Schema({
     item: [],
     rates: [],
     hours: [],
+    total: {
+        type: Number,
+    }
 });
 
 
