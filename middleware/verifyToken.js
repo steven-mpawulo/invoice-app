@@ -2,20 +2,17 @@ const jwt = require('jsonwebtoken');
 const verifyToken = (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
     console.log(token);
-
-    if (token !== undefined){
-       const verifiedUser = jwt.verify(token, process.env.SECRET_KEY);
-       if (verifiedUser) {
-        req.user = verifiedUser;
-       } else {
-        res.sendStatus(400);
-       }
-
+    if (token !== undefined) {
+        const user = jwt.verify(token, process.env.SECRET_KEY);
+        console.log(user);
+        // console.log("am here");
+        // console.log(user);
+        req.user = user;
     } else {
-        res.sendStatus(400);
+        res.status(400).json({"message": "something went wrong"});
     }
-
     next();
+
 }
 
 module.exports = verifyToken;
