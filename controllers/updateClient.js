@@ -8,7 +8,7 @@ const updateClient = async (req, res) => {
 
     if (Object.keys(body).length !== 0){
         if (body.fullName && body.email && body.phoneNumber) {
-            await Client.findByIdAndUpdate({'_id': clientId}, {$set: {"fullName": body.fullName, "email": body.email, "phoneNumber": body.phoneNumber} }).then((value) => {
+            await Client.findByIdAndUpdate({'_id': clientId}, {$set: {"fullName": body.fullName, "email": body.email, "phoneNumber": body.phoneNumber} }, {new: true}).then((value) => {
                 console.log(value);
                 res.status(201).json({"message": "client updated", "client": value});
             }).catch((e) => {
