@@ -11,6 +11,7 @@ const login = require('../controllers/login');
 const signup = require('../controllers/signup');
 const verifyToken = require('../middleware/verifyToken');
 const getUsers = require('../controllers/getUsers');
+const deleteUser = require('../controllers/deleteUser');
 const invoiceRouter = express.Router();
 
 
@@ -26,6 +27,7 @@ invoiceRouter.get('/invoices', verifyToken, getInvoices);
 invoiceRouter.post('/users/login', login);
 invoiceRouter.post('/users/signup', signup);
 invoiceRouter.get('/users', getUsers);
+invoiceRouter.delete('users/:id', deleteUser);
 
 
 module.exports = invoiceRouter;
