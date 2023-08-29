@@ -20,7 +20,7 @@ const signup = async (req, res) => {
                 if (value) {
                      // create token for user
                      const token = jwt.sign({"_id": value._id, "email": value.email}, process.env.SECRET_KEY, {expiresIn: '1d'});
-                    res.status(201).json({"message": "user created", "user": value});
+                    res.status(201).json({"message": "user created", "user": value, "token": token});
                 } else {
                     res.status(400).json({"message": "failed to save user"});
                 }
