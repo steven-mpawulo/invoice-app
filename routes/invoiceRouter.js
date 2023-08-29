@@ -9,6 +9,7 @@ const updateClient = require('../controllers/updateClient');
 const deleteClient = require('../controllers/deleteClient');
 const login = require('../controllers/login');
 const signup = require('../controllers/signup');
+const verifyToken = require('../middleware/verifyToken');
 const invoiceRouter = express.Router();
 
 
@@ -20,7 +21,7 @@ invoiceRouter.delete('/clients/:id', deleteClient);
 invoiceRouter.post('/invoices/:id', createInvoice);
 invoiceRouter.delete('/invoices/:id', deleteInvoice);
 invoiceRouter.put('/invoices/:id', updateInvoice);
-invoiceRouter.get('/invoices', getInvoices);
+invoiceRouter.get('/invoices', verifyToken, getInvoices);
 invoiceRouter.post('/users/login', login);
 invoiceRouter.post('/users/signup', signup);
 

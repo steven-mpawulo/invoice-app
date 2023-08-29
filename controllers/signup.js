@@ -16,7 +16,7 @@ const signup = async (req, res) => {
                 "password": hashedPassword,
             });
 
-            user.save().then((value) => {
+            await user.save().then((value) => {
                 console.log(value);
                 if (value) {
                      // create token for user
