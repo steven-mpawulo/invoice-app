@@ -27,7 +27,7 @@ invoiceRouter.get('/invoices', verifyToken, getInvoices);
 invoiceRouter.post('/users/login', login);
 invoiceRouter.post('/users/signup', signup);
 invoiceRouter.get('/users', getUsers);
-invoiceRouter.delete('users/:id', deleteUser);
+invoiceRouter.delete('/users/:id', deleteUser);
 
 
 module.exports = invoiceRouter;
