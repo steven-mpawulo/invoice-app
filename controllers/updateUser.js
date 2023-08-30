@@ -8,10 +8,10 @@ const updateUser = (req, res) => {
 
     if (Object.keys(body).length !== 0){
         if (userId !== null) {
-            if (body.userName && body.email) {
-                User.findByIdAndUpdate({'_id': userId}, {$set : {"userName": body.userName, "email": body.email}}).then((value) => {
+            if (body.fullName && body.email) {
+                User.findByIdAndUpdate({'_id': userId}, {$set : {"fullName": body.fullName, "email": body.email}}, {new: true}).then((value) => {
                     console.log(value);
-                    res.status(201).json({"message": "user updated"});
+                    res.status(201).json({"message": "user updated", "user": value});
 
                 }).catch((e) => {
                     console.log(e);
